@@ -17,7 +17,7 @@ class Header extends Component {
         <h1>
           <input
             type="text"
-            defaultValue="My List Title"
+            placeholder="Your List Title..."
             onChange={this.handleTextChange}
             ref={this.input}
           />

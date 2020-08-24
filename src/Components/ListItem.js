@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
+import { ReactComponent as DeleteIcon } from "../delete.svg";
+
 class ListItem extends Component {
   constructor() {
     super();
@@ -18,7 +20,7 @@ class ListItem extends Component {
   };
 
   render() {
-    const { value, isChecked, changeCheckedState, id } = this.props;
+    const { value, id, deleteListItem } = this.props;
     return (
       <div className="list-item">
         <input
@@ -36,6 +38,14 @@ class ListItem extends Component {
             className={this.state.isChecked ? "checked-item" : null}
           />
         </li>
+        <button
+          aria-label={"Delete " + value}
+          onClick={() => {
+            deleteListItem(id);
+          }}
+        >
+          <DeleteIcon />
+        </button>
       </div>
     );
   }

@@ -12,12 +12,17 @@ class ListContainer extends Component {
   //
 
   render() {
-    const { changeCheckedState } = this.props;
+    const { changeCheckedState, deleteListItem } = this.props;
     return (
       <div className="list-container">
         <ul>
           {this.props.listItems.map((listItem, index) => (
-            <ListItem value={listItem.value} key={listItem.id} />
+            <ListItem
+              value={listItem.value}
+              key={listItem.id}
+              id={listItem.id}
+              deleteListItem={deleteListItem}
+            />
           ))}
         </ul>
       </div>

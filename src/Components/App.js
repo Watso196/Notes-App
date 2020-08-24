@@ -4,18 +4,14 @@ import "../App.css";
 
 import Header from "./Header";
 import ListContainer from "./ListContainer";
+import NewItemForm from "./NewItemForm";
 
 class App extends Component {
   state = {
-    listItems: [
-      {
-        value: "This is an example list item!",
-        id: 0,
-      },
-    ],
+    listItems: [],
   };
 
-  prevListItemId = 1;
+  prevListItemId = 0;
 
   handleAddListItem = (value) => {
     this.setState((prevState) => {
@@ -32,15 +28,23 @@ class App extends Component {
     });
   };
 
+  handleDeleteListItem = (id) => {
+    this.setState((prevState) => {
+      return {
+        listItems: prevState.listItems.filter((listItem) => listItem.id !== id),
+      };
+    });
+  };
+
   render() {
     return (
       <div className="app-container">
         <Header />
-        <ListContainer listItems={this.state.listItems} />
-        // add text area to create new value for new list item here
-        <button onClick={this.handleAddListItem} aria-label="add new list item">
-          +
-        </button>
+        <ListContainer
+          listItems={this.state.listItems}
+          deleteListItem={this.handleDeleteListItem}
+        />
+        <NewItemForm addListItem={this.handleAddListItem} />
       </div>
     );
   }
