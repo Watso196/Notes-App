@@ -64,7 +64,6 @@ li textarea,
 input[type="text"] {
   width: 100%;
   font-size: 1em;
-  outline: none;
   border: none;
   border-bottom: 1px solid #aaa;
   font-family: "Helvetica Neue", sans-serif;
@@ -95,6 +94,6 @@ button {
 }
 
 input:focus, textarea:focus, button:focus {
-  outline: 1px solid red;
+  outline: 1px dotted black;
   padding: 2px;
 }
