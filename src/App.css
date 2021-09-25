@@ -94,3 +94,8 @@ button {
 .checked-item {
   text-decoration: line-through;
 }
+
+*:focus {
+  outline: 1px solid red;
+  padding: 2px;
+}
