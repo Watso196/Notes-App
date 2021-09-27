@@ -55,7 +55,7 @@ class App extends Component {
         //Focus button with id value
         document
           .querySelector(
-            "input[type=checkbox][name=" + newFocusElementValue + "]"
+            'input[type="checkbox"][name="' + newFocusElementValue + '"]'
           )
           .focus();
       }
