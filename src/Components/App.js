@@ -30,8 +30,38 @@ class App extends Component {
   };
 
   handleDeleteListItem = (id, value) => {
-    if (id - 2 >= 2) {
-      document.getElementById(id - 2).focus();
+    if (this.state.listItems.length > 1) {
+      //get deleted item from unchanged state
+      let deletedItem = this.state.listItems.filter(
+        (listItem) => listItem.id == id
+      );
+      //get index in object array for deleted item
+      let deletedItemIndex = this.state.listItems.indexOf(deletedItem[0]);
+      //get previous object by array index
+      if (deletedItemIndex > 0) {
+        //Find the previous list item
+        let newFocusObject = this.state.listItems[deletedItemIndex + 1];
+        //Get previous list item's id value
+        let newFocusElementId = Object.values(newFocusObject)[2];
+        console.log(newFocusElementId);
+        //Focus button with id value
+        document.getElementById(newFocusElementId).focus();
+      } else {
+        //Find the previous list item
+        let newFocusObject = this.state.listItems[deletedItemIndex + 1];
+        //Get previous list item's id value
+        let newFocusElementValue = Object.values(newFocusObject)[0];
+        console.log(newFocusElementValue);
+        //Focus button with id value
+        document
+          .querySelector(
+            "input[type=checkbox][name=" + newFocusElementValue + "]"
+          )
+          .focus();
+      }
+      // let lastItemId = Object.values(lastItemObject)[2];
+      // console.log(lastItemId);
+      // document.getElementById(lastItemId).focus();
     } else {
       document.getElementById("addNew").focus();
     }
